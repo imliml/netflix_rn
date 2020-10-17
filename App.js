@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import MovieScreen from "./screens/MovieScreen";
+import TVScreen from "./screens/TVScreen";
+import Search from "./screens/Search";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// export default function App() {
+//   return <MovieScreen />;
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const TabNavigator = createBottomTabNavigator({
+  Movie: {
+    screen: MovieScreen,
+  },
+  TV: {
+    screen: TVScreen,
+  },
+  Search: {
+    screen: Search,
   },
 });
+
+export default createAppContainer(TabNavigator);
